@@ -6,9 +6,9 @@ services:
     restart: unless-stopped
     ports:
       - 9001:80
-    # devices:
+    devices:
     # use `python -m serial.tools.miniterm` to see what the name is of the printer, this requires pyserial
-    #  - /dev/ttyACM0:/dev/ttyACM0
+     - /dev/ttyACM0:/dev/ttyACM0
     #  - /dev/video0:/dev/video0
     volumes:
      - v_octoprint1:/octoprint
@@ -22,9 +22,9 @@ services:
     restart: unless-stopped
     ports:
       - 9002:80
-    # devices:
+    devices:
     # use `python -m serial.tools.miniterm` to see what the name is of the printer, this requires pyserial
-    #  - /dev/ttyACM0:/dev/ttyACM0
+     - /dev/ttyACM1:/dev/ttyACM1
     #  - /dev/video0:/dev/video0
     volumes:
      - v_octoprint2:/octoprint
