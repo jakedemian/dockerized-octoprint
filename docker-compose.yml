@@ -8,12 +8,12 @@ services:
       - 9001:80
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
-      - /dev/video1:/dev/video1
+      - /dev/video0:/dev/video0
     volumes:
       - v_octoprint1:/octoprint
     environment:
       - ENABLE_MJPG_STREAMER=true
-      - CAMERA_DEV=/dev/video1
+      - CAMERA_DEV=/dev/video0
 
   octoprint2:
     image: octoprint/octoprint
@@ -22,13 +22,13 @@ services:
       - 9002:80
     devices:
       - /dev/ttyACM1:/dev/ttyACM1
-      - /dev/video3:/dev/video3
+      - /dev/video2:/dev/video2
     volumes:
       - v_octoprint2:/octoprint
 
     environment:
       - ENABLE_MJPG_STREAMER=true
-      - CAMERA_DEV=/dev/video3
+      - CAMERA_DEV=/dev/video2
   ####
   # uncomment if you wish to edit the configuration files of octoprint
   # refer to docs on configuration editing for more information
