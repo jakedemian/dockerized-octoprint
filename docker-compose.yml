@@ -7,15 +7,13 @@ services:
     ports:
       - 9001:80
     devices:
-    # use `python -m serial.tools.miniterm` to see what the name is of the printer, this requires pyserial
-     - /dev/ttyACM0:/dev/ttyACM0
-    #  - /dev/video0:/dev/video0
+      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/video1:/dev/video1
     volumes:
-     - v_octoprint1:/octoprint
-    # uncomment the lines below to ensure camera streaming is enabled when
-    # you add a video device
-    #environment:
-    #  - ENABLE_MJPG_STREAMER=true
+      - v_octoprint1:/octoprint
+    environment:
+      - ENABLE_MJPG_STREAMER=true
+      - CAMERA_DEV=/dev/video1
 
   octoprint2:
     image: octoprint/octoprint
@@ -23,16 +21,14 @@ services:
     ports:
       - 9002:80
     devices:
-    # use `python -m serial.tools.miniterm` to see what the name is of the printer, this requires pyserial
-     - /dev/ttyACM1:/dev/ttyACM1
-    #  - /dev/video0:/dev/video0
+      - /dev/ttyACM1:/dev/ttyACM1
+      - /dev/video3:/dev/video3
     volumes:
-     - v_octoprint2:/octoprint
-    # uncomment the lines below to ensure camera streaming is enabled when
-    # you add a video device
-    #environment:
-    #  - ENABLE_MJPG_STREAMER=true
-  
+      - v_octoprint2:/octoprint
+
+    environment:
+      - ENABLE_MJPG_STREAMER=true
+      - CAMERA_DEV=/dev/video3
   ####
   # uncomment if you wish to edit the configuration files of octoprint
   # refer to docs on configuration editing for more information
