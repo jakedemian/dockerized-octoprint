@@ -14,7 +14,7 @@ services:
     environment:
       - ENABLE_MJPG_STREAMER=true
       - CAMERA_DEV=/dev/video0
-
+      - MJPG_STREAMER_INPUT=-r 320x240 -fps 15
   octoprint2:
     image: octoprint/octoprint
     restart: unless-stopped
@@ -22,13 +22,14 @@ services:
       - 9002:80
     devices:
       - /dev/ttyACM1:/dev/ttyACM1
-      - /dev/video2:/dev/video2
+      - /dev/video3:/dev/video3
     volumes:
       - v_octoprint2:/octoprint
 
     environment:
       - ENABLE_MJPG_STREAMER=true
-      - CAMERA_DEV=/dev/video2
+      - CAMERA_DEV=/dev/video3
+      - MJPG_STREAMER_INPUT=-r 320x240 -fps 15
   ####
   # uncomment if you wish to edit the configuration files of octoprint
   # refer to docs on configuration editing for more information
